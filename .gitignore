@@ -1,0 +1,51 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ---- Env / secrets ----
+.env
+*.local.env
+
+# ---- Data runtime artifacts (regenerated; keep .gitkeep placeholders) ----
+data/logs/*
+!data/logs/.gitkeep
+data/state/*
+!data/state/.gitkeep
+data/kpi_reports/windows/*
+!data/kpi_reports/windows/.gitkeep
+data/kpi_reports/hourly/*
+!data/kpi_reports/hourly/.gitkeep
+data/kpi_reports/daily/*
+!data/kpi_reports/daily/.gitkeep
+data/kpi_reports/uptime/*
+!data/kpi_reports/uptime/.gitkeep
+data/kpi_reports/downtime/*
+!data/kpi_reports/downtime/.gitkeep
+data/downtime/*
+!data/downtime/.gitkeep
+data/incoming_csvs/*
+!data/incoming_csvs/.gitkeep
+data/incoming_csvs/sample_sensor_readings.json
+data/incoming_csvs/sample_sensor_readings.jsonl
+data/maintenance/maintenance_windows.json
+
+# ---- Logs ----
+*.log
+
+# ---- Terraform ----
+infra/terraform/.terraform/
+infra/terraform/terraform.tfstate
+infra/terraform/terraform.tfstate.backup
+infra/terraform/terraform.tfstate.d/
+
+# ---- Editor / OS ----
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,28 @@
+aws_region       = "ap-south-1"
+project_name     = "sensor-kpi-ap"
+raw_bucket_name  = "raw-sensor-data-bucket-20260915-ap"
+raw_prefix       = "raw-sensor-data/"
+
+sns_topic_name = "sensor-data-topic"
+sqs_queue_name = "sensor-data-queue"
+sqs_dlq_name   = "sensor-data-queue-dlq"
+
+sqs_max_receive_count          = 5
+sqs_visibility_timeout_seconds = 60
+
+# Set to true only if you want Terraform to also create the EC2 poller
+# instance; leave false if you already have an instance and just want the
+# IAM role, S3/SNS/SQS wiring.
+create_ec2_instance  = true
+ec2_instance_type    = "t3.small"
+ec2_root_volume_size = 20
+ec2_subnet_id        = ""
+ec2_key_name         = ""
+create_ec2_ssh_key   = true
+ec2_private_key_path = "sensor-kpi-ec2.pem"
+ec2_ssh_allowed_cidr = ""
+
+tags = {
+  Project     = "sensor-kpi-pipeline"
+  Environment = "prod"
+}

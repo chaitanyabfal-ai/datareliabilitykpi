@@ -1,0 +1,18 @@
+[Unit]
+Description=Garage Sync (Garage S3 -> AWS S3)
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=sensoruser
+WorkingDirectory=/opt/kpidatareporttf
+EnvironmentFile=/opt/kpidatareporttf/.env
+ExecStart=/usr/bin/python3 /opt/kpidatareporttf/scripts/garage_sync.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

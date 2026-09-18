@@ -1,0 +1,17 @@
+[Unit]
+Description=Streamlit KPI Dashboard (localhost only)
+After=ec2-kpi-poller.service
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/kpidatareporttf
+EnvironmentFile=/opt/kpidatareporttf/.env
+ExecStart=/usr/bin/python3 -m streamlit run dashboard/app.py --server.address 127.0.0.1 --server.port 8501 --server.headless true
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

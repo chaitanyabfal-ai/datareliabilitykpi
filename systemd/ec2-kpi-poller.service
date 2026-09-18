@@ -1,0 +1,18 @@
+[Unit]
+Description=EC2 KPI Poller (SQS -> KPI reports)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/kpidatareporttf
+EnvironmentFile=/opt/kpidatareporttf/.env
+ExecStart=/opt/kpidatareporttf/scripts/ec2_sqs_kpi_poller.sh
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

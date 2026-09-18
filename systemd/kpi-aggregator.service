@@ -1,0 +1,14 @@
+[Unit]
+Description=ILDS KPI Aggregator (windows -> hourly/daily + reliability rollups)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/ilds-datareliabilitykpi
+EnvironmentFile=/opt/ilds-datareliabilitykpi/.env
+ExecStart=/usr/bin/python3 scripts/kpi_aggregator.py --watch --interval 60
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
